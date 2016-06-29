@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SalzPUG Python Coding Dojo</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .logo img { width: 100%; }
+      .tdd { display: block; text-align:center; }
+      .tdd img { transform: scale(0.8); }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+      class: center, middle
+
+      .logo[![SalzPUG Logo](salzpug.svg)]
+
+      # Python Coding Dojo
+
+      .left[```python
+      from datetime import date
+      today = date.today()
+      today.strftime('%B %-d, %Y')
+      ```]
+
+      ---
+
+      layout: true
+
+      # Coding Dojo?
+
+      ---
+
+      * Code
+      * Learn
+      * Have Fun
+
+      ---
+
+      * Safe place, not work
+      * Our goal: to learn
+      * *Not* our goal: to finish the task
+
+      ---
+
+      layout: false
+
+      # Practices
+
+      * Test-Driven Development
+      * Pair Programming
+
+      ---
+
+      layout: true
+      
+      # Test-Driven Development
+
+      ---
+      
+      .tdd[![TDD](tdd.gif)]
+
+      ---
+
+      ## Case Study: Fizz buzz
+
+      > Given a number either output
+      > * "Fizz", if its divisable by three
+      > * "buzz", if its divisable by five
+      > * otherwise the number itself
+
+      https://en.wikipedia.org/wiki/Fizz_buzz
+
+      ---
+
+      ## Iteration 1
+
+      ```python
+      from nose.tools import *
+      import fizzbuzz
+
+      *def test_1_returns_1():
+      *   assert_equal(fizzbuzz.fizzbuzz(1), "1")
+      ```
+
+      --
+
+      ```python
+      def fizzbuzz(number):
+          return 1
+      ```
+
+      ---
+
+      ## Iteration 2
+
+      ```python
+      from nose.tools import *
+      import fizzbuzz
+
+      def test_1_returns_1():
+          assert_equal(fizzbuzz.fizzbuzz(1), "1")
+
+      *def test_2_returns_2():
+      *   assert_equal(fizzbuzz.fizzbuzz(2), "2")
+      ```
+
+      --
+
+      ```python
+      def fizzbuzz(number):
+          return str(number)
+      ```
+
+      ---
+
+      ## Iteration 3
+
+      ```python
+      from nose.tools import *
+      import fizzbuzz
+
+      def test_1_returns_1():
+          assert_equal(fizzbuzz.fizzbuzz(1), "1")
+
+      def test_2_returns_2():
+          assert_equal(fizzbuzz.fizzbuzz(2), "2")
+
+      *def test_3_returns_Fizz():
+      *   assert_equal(fizzbuzz.fizzbuzz(3), "Fizz")
+      ```
+
+      --
+
+      ```python
+      def fizzbuzz(number):
+          if number == 3:
+              return "Fizz"
+          return str(number)
+      ```
+
+      ---
+
+      .center[What will be the next test?]
+
+      ---
+
+      layout: false
+
+      # Pair Programming
+
+      * Driver
+        * types at the computer
+
+      --
+
+      * Navigator
+        * looks for *tactical defects* (syntax errors, typos, etc.)
+        * looks for *strategic defects* (implementation or design fails to accomplish its goal)
+        * strategic, long-term thinker
+
+      --
+
+      An effective pair should be in constant discussion.
+
+      ---
+
+      # Workflow
+
+      * Introduction
+      * Discussion
+      * Working on the problem
+        * 1 driver, 1 navigator
+        * changed every 5 minutes (audience -> navigator -> driver)
+      * Break
+      * Working on the problem (second round)
+      * Retrospective
+
+      ---
+
+      # Roman Numerals
+
+      The Romans wrote numbers using letters - I, V, X, L, C, D, M.
+
+      --
+
+      Write a function to convert from normal numbers to Roman Numerals.
+
+      --
+
+      ```shell
+      In [1]: roman(1)
+      Out[1]: 'I'
+
+      In [2]: roman(10)
+      Out[2]: 'X'
+
+      In [3]: roman(7)
+      Out[3]: 'VII'
+      ```
+
+      --
+
+      Bonus - Write a function to convert from Roman Numerals to normal numbers.
+
+      ---
+
+      # Retrospective
+
+      --
+
+      * Happy with the result?
+
+        * whats good?
+        * whats bad?
+        * more refactoring necessary?
+
+      --
+
+      * Did we learn anything new?
+
+      --
+
+      * Did anything unexpected happen?
+
+      --
+
+      * What do we still need to practice more?
+
+      --
+
+      * What should we do differently in the next dojo?
+
+      --
+
+      * What will you do differently in your day-to-day job?
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
