@@ -3,7 +3,7 @@
 
 from nose.tools import *
 
-from roman import roman
+from roman import roman, arabic
 
 def test_roman_1():
     assert_equals(roman(1), 'I')
@@ -53,5 +53,43 @@ def test_roman_1999():
 def test_roman_1499():
     assert_equals(roman(1499), 'MCDXCIX')
 
+def test_arabic_I():
+    assert_equals(arabic('I'), 1)
+    
+def test_roundtrip():
+    assert_equals(arabic(roman(1)), 1)
+    
+def test_arabic_XL():
+    assert_equals(arabic('XL'), 40)
+    
+def test_arabic_CM():
+    assert_equals(arabic('CM'), 900)
+    
+def test_arabic_M():
+    assert_equals(arabic('M'), 1000)
+    
+def test_arabic_MDX():
+    assert_equals(arabic('MDX'), 1510)
+   
+def test_arabic_MCDXCIX():
+    assert_equals(arabic('MCDXCIX'), 1499)
+   
+def test_arabic_MMIX():
+    assert_equals(arabic('MMIX'), 2009)
+    
+def test_arabicCCCXXXVIII():
+    assert_equals(arabic('CCCXXXVIII'), 338)
+
+def test_arabicCCCLXXXVIII():
+    assert_equals(arabic('CCCLXXXVIII'), 388)
+
+def test_arabicCCCLXXXIX():
+    assert_equals(arabic('CCCLXXXIX'), 389)
+
+def test_roundtrip_49():
+    assert_equals(arabic(roman(49)), 49)
+
+def test_roundtrip_XLIX():
+    assert_equals(roman(arabic('XLIX')), 'XLIX')
 
 

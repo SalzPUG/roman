@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import math
-
 numerals = {
     1: 'I',
     4: 'IV',
@@ -21,19 +19,32 @@ numerals = {
 
 def roman(number):
     result = ""
-    if number == 0:
-        return result
     while(number > 0):
         for key in sorted(numerals, reverse=True):
             if number >= key:
-                x = int(math.floor(number / key))
-                if x == 4 or x == 90:
-                    result += specials[key * x]
-                else:
-                    result = result + x * numerals[key]
+                x = number // key
+                result = result + x * numerals[key]
                 number = number - key * x
     return result
 
+def arabic(roman):
+    inverse = {v:k for k, v in numerals.items()}
+    
+    result = 0
+    
+    while roman:
+        twos = roman[:2]
+        
+        if twos in inverse:
+            result += inverse[twos]
+            roman = roman[2:]
+        else: 
+            result += inverse[roman[0]]
+            roman = roman[1:]
+            
+    return result
+            
+            
 if __name__ == "__main__":
     import nose
     nose.main()
